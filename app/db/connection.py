@@ -22,7 +22,7 @@ password = os.getenv("password")
 if(DEBUG == True):
     print(user, host, database, password)
     
-async def connection(user, host, database, password):
+async def get_connection(user, host, database, password):
 
     try:
         connection = await asyncpg.connect(
@@ -40,11 +40,8 @@ async def connection(user, host, database, password):
         print("Mistake: ", ex)
     finally:
         if connection:
-            await connection.close()
-            
-            if(DEBUG == True):
-                print("Connection closed")
+            return connection            
             
 
-asyncio.run(connection(user, host, database, password))
+asyncio.run(get_connection(user, host, database, password))
     
