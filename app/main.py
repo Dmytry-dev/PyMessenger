@@ -8,7 +8,8 @@ import asyncpg
 from dotenv import load_dotenv
 import os
 from db.connection import get_connection
-from db.users import registration, sing_in, dev_admin_panel
+from db.users import registration, sing_in
+from panels.admin_panel import dev_admin_panel
 
 
 DEBUG = True
@@ -27,6 +28,7 @@ def main():
     if(DEBUG == True):
         print(user, host, database, password)
 
+    print("MAIN MENU")
     while 1:
         user_choice = input("Sing in - 1\nRegistration - 2\nExit - 3\n")
         if user_choice == "1":
